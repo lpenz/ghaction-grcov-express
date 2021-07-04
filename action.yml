@@ -1,0 +1,16 @@
+---
+name: grcov express runner
+description: TODO
+branding:
+  icon: play-circle
+  color: black
+inputs:
+  working_directory:
+    description: Repository directory
+    default: .
+outputs:
+  report:
+    description: Absolute path to the generated code coverage file
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
