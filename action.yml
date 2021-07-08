@@ -1,13 +1,9 @@
 ---
-name: grcov express runner
-description: TODO
+name: grcov express
+description: Faster grcov github action that runs it from a container
 branding:
   icon: play-circle
   color: black
-inputs:
-  working_directory:
-    description: Repository directory
-    default: .
 outputs:
   report:
     description: Absolute path to the generated code coverage file
