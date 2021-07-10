@@ -12,14 +12,17 @@ The actions-rs/grcov action installs
 [grcov](https://github.com/mozilla/grcov) in the local container
 before executing it, which takes time. This action downloads a ~20MB
 alpine-based container with grcov installed instead, and runs the tool
-from there.
+from there. It saved ~3min in my very limited tests.
 
 
 ## Usage
 
 Just run this action instead of the [actions-rs/grcov] github
-action. This action even outputs a `report` parameter to maintain
+action. grcov-express even outputs a `report` parameter to maintain
 compatibility, although the configuration file is supported.
+
+The yaml below shows an example of how to get rust test coverage
+information into [coveralls]:
 
 ```yml
 on: [push]
@@ -40,7 +43,12 @@ jobs:
           CARGO_INCREMENTAL: '0'
           RUSTFLAGS: '-Zprofile -Ccodegen-units=1 -Cinline-threshold=0 -Clink-dead-code -Coverflow-checks=off -Cpanic=abort -Zpanic_abort_tests'
           RUSTDOCFLAGS: '-Zprofile -Ccodegen-units=1 -Cinline-threshold=0 -Clink-dead-code -Coverflow-checks=off -Cpanic=abort -Zpanic_abort_tests'
-      - uses: docker://lpenz/ghaction-grcov-express:0.1
+      - id: coverage
+        uses: docker://lpenz/ghaction-grcov-express:0.2
+      - uses: coverallsapp/github-action@master
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          path-to-lcov: ${{ steps.coverage.outputs.report }}
 ```
 
 
@@ -49,4 +57,5 @@ jobs:
 - `report`: path to the report file
 
 [actions-rs/grcov]: https://github.com/actions-rs/grcov
+[coveralls]: https://coveralls.io/
 
