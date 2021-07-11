@@ -25,9 +25,8 @@ The yaml below shows an example of how to get rust test coverage
 information into [coveralls]:
 
 ```yml
-on: [push]
 jobs:
-  lint:
+  test:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -45,7 +44,7 @@ jobs:
           RUSTDOCFLAGS: '-Zprofile -Ccodegen-units=1 -Cinline-threshold=0 -Clink-dead-code -Coverflow-checks=off -Cpanic=abort -Zpanic_abort_tests'
       - id: coverage
         uses: docker://lpenz/ghaction-grcov-express:0.2
-      - uses: coverallsapp/github-action@master
+      - uses: coverallsapp/github-action@v1.1.2
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           path-to-lcov: ${{ steps.coverage.outputs.report }}
