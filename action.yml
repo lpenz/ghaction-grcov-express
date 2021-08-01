@@ -1,6 +1,8 @@
 ---
 name: grcov express
-description: Faster grcov github action that runs it from a container
+description: |
+  Faster grcov github action that runs it from a container.
+  Useful to gather rust test coverage data.
 branding:
   icon: play-circle
   color: black
