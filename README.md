@@ -1,3 +1,10 @@
+# Obsolete
+
+Please use https://github.com/lpenz/ghaction-rust-coverage for a more
+up-to-date rust coverage github action.
+
+Old documentation below:
+
 [![marketplace](https://img.shields.io/badge/marketplace-grcov--express-blue?logo=github)](https://github.com/marketplace/actions/grcov-express)
 [![CI](https://github.com/lpenz/ghaction-grcov-express/actions/workflows/ci.yml/badge.svg)](https://github.com/lpenz/ghaction-grcov-express/actions/workflows/ci.yml)
 [![github](https://img.shields.io/github/v/release/lpenz/ghaction-grcov-express?include_prereleases&label=release&logo=github)](https://github.com/lpenz/ghaction-grcov-express/releases)
